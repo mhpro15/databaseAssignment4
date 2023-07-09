@@ -1,0 +1,43 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  
+<main>
+    <h1>Employee List</h1>
+    <table>
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+       
+            <% for (let i = 0; i < employees.length; i++) { %>
+            <tr class="rowData" id=<%= employees[i]%>>
+                <td><%= employees[i][0] %></td>
+                <td><%= employees[i][1] %></td>
+                <td><%= employees[i][2] %></td>
+                <td id="modifyTarget1" name="modifyTarget1"><%= employees[i][3] %></td>
+                <td id="modifyTarget2" name="modifyTarget2"><%= employees[i][4] %></td>
+                <td id="modifyTarget3" name="modifyTarget3"><%= employees[i][5] %></td>
+            
+
+            </tr>
+            <% } %>
+       
+    </table>
+</main>
+  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<script src="/Scripts/list.js"></script>
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+

@@ -1,0 +1,115 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  
+<main>
+    <form action="./hiring" method="POST">
+    <div id="hiring-form-container">
+        <h2>Employee Hiring Form</h2>
+        <label for="fname">First name: </label>
+        <input type="text" id="fname" name="fname"> <br>
+        <label for="lname">Last name: </label>
+        <input type="text" id="lname" name="lname"> <br>
+        <label for="phone">Phone number: </label>
+        <input type="text" id="phone" name="phone"> <br>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email"> <br>
+        <label for="hiredate">Hire date: </label>
+        <input type="text" id="hiredate" name="hiredate"> <br>
+        <label for="salary">Salary: </label>
+        <input type="text" id="salary" name="salary"> <br> <br>
+
+        <label for="">Position: </label>
+        <table>
+            <tr>
+                <th>Job ID</th>
+                <th>Job Title</th>
+            </tr>
+            
+            <tr>
+                <td>
+                    <input type="text" id="position-list-id" name="jobId" >
+                </td>
+                <td>
+                    <select name="job-title" id="position-list-title" onchange="getJobId()" >
+                     <% for (let i = 0; i < jobs.length; i++) { %>
+                        <option value="<%= jobs[i][1] %>"><%= jobs[i][1] %></option>
+                        <% } %>
+                    </select>
+                </td>
+                
+            </tr>
+        </table>
+
+        <br>
+        <label for="">Manager: </label>
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            
+            <tr>
+                <td>
+                    <select name="managerId" id="employee-id" onchange="managerFill1()" >
+                     <% for (let i = 0; i < employees.length; i++) { %>
+                        <option value="<%= employees[i][0] %>"><%= employees[i][0] %></option>
+                        <% } %>
+                    </select>
+                </td>
+                <td>
+                    <select name="employee-fname" id="employee-fname" onchange="managerFill2()" >
+                     <% for (let i = 0; i < employees.length; i++) { %>
+                        <option value="<%= employees[i][1] %>"><%= employees[i][1] %></option>
+                        <% } %>
+                    </select>
+                </td>
+                <td>
+                    <select name="employee-lname" id="employee-lname" onchange="managerFill3()" >
+                     <% for (let i = 0; i < employees.length; i++) { %>
+                        <option value="<%= employees[i][2] %>"><%= employees[i][2] %></option>
+                        <% } %>
+                    </select>
+                </td>
+                
+            </tr>
+        </table>
+        <br>
+
+        <label for="">Department: </label>
+        <table>
+           <tr>
+                <th>Department ID</th>
+                <th>Department Name</th>
+            </tr>
+            
+            <tr>
+                <td>
+                    <input type="text" id="department-list-id" name="departmentId" >
+                </td>
+                <td>
+                    <select name="department-title" id="department-list-title" onchange="getDepartmentId()" >
+                     <% for (let i = 0; i < departments.length; i++) { %>
+                        <option value="<%= departments[i][1] %>"><%= departments[i][1] %></option>
+                        <% } %>
+                    </select>
+                </td>
+                
+            </tr>
+        </table>
+        <br>
+        <a href=""><button type="cancel">Cancel</button></a>
+        <button type="submit">Hire</button>
+    </div>
+    </form>
+</main>
+  
+<%- include ../partials/bottom_nav.ejs %>  
+<script src="/Scripts/hiringForm.js"></script>
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
