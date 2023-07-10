@@ -19,6 +19,7 @@ oracledb.createPool({
 
 let indexRouter = require("../routes/index");
 let employeeRouter = require("../routes/employee");
+let jobRouter = require("../routes/job");
 
 let app = express();
 
@@ -45,6 +46,7 @@ app.use(flash());
 // routing
 app.use("/", indexRouter);
 app.use("/employee", employeeRouter);
+app.use("/job", jobRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

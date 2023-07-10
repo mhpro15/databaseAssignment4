@@ -7,17 +7,17 @@
     <div id="hiring-form-container">
         <h2>Employee Hiring Form</h2>
         <label for="fname">First name: </label>
-        <input type="text" id="fname" name="fname"> <br>
+        <input type="text" id="fname" name="fname" required > <br>
         <label for="lname">Last name: </label>
-        <input type="text" id="lname" name="lname"> <br>
+        <input type="text" id="lname" name="lname" required> <br>
         <label for="phone">Phone number: </label>
-        <input type="text" id="phone" name="phone"> <br>
+        <input type="text" id="phone" name="phone" required> <br>
         <label for="email">Email: </label>
-        <input type="text" id="email" name="email"> <br>
+        <input type="text" id="email" name="email" required> <br>
         <label for="hiredate">Hire date: </label>
-        <input type="text" id="hiredate" name="hiredate"> <br>
+        <input type="date" id="hiredate" name="hiredate" > <br>
         <label for="salary">Salary: </label>
-        <input type="text" id="salary" name="salary"> <br> <br>
+        <input type="text" id="salary" name="salary" required> <br> <br>
 
         <label for="">Position: </label>
         <table>
@@ -99,8 +99,9 @@
             </tr>
         </table>
         <br>
-        <a href=""><button type="cancel">Cancel</button></a>
-        <button type="submit">Hire</button>
+        <p><%=error%></p>
+        <a href="/employee">Cancel</a>
+        <button type="submit" id="submitBtn">Hire</button>
     </div>
     </form>
 </main>
