@@ -9,7 +9,7 @@ const { cp } = require('fs');
 
 
 module.exports.displayJobPage = async (req, res, next) => {
-    res.render('job/updateJob', { title: 'Job Create and Modify' });
+    res.render('job/updateJob', { title: 'Job' });
 }
 
 module.exports.getJobById = async (req, res, next) => {

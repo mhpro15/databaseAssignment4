@@ -1,9 +1,14 @@
 <%- include ../partials/header.ejs %>
 
-<%- include ../partials/main_nav.ejs %>
+<div class="flex-container">
+  <div class="flex-item-left"><%- include ../partials/main_nav.ejs %></div>
+  <div class="flex-item-right">
+
+    <div class="searchBar">
+      Search for ID: <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for id..">
+    </div>
   
-<main>
-    <h1>Employee List</h1>
+<main class="listContainer">
     <table>
         <tr>
             <th>Employee ID</th>
@@ -12,11 +17,11 @@
             <th>Email</th>
             <th>Phone Number</th>
             <th>Salary</th>
-            <th></th>
+            <th>Action</th>
         </tr>
        
             <% for (let i = 0; i < employees.length; i++) { %>
-            <tr class="rowData" id=<%= employees[i]%>>
+            <tr class="rowData" id=<%= employees[i][0]%>>
                 <td><%= employees[i][0] %></td>
                 <td><%= employees[i][1] %></td>
                 <td><%= employees[i][2] %></td>
@@ -30,6 +35,9 @@
        
     </table>
 </main>
+
+  </div>
+</div>
   
 <%- include ../partials/bottom_nav.ejs %>  
 

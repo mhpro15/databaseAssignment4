@@ -1,3 +1,14 @@
 <!-- Main Navigation -->
-  <nav >
+
+  <h2 class="nav-title">Hiro Business Management</h2>
+  <nav class="left-nav">
+    <ul>
+      <% title == 'Home' ? active1 = 'active' : active1 = '' %>
+      <% title == 'Job' ? active2 = 'active' : active2 = '' %>
+      <% title == 'Hiring Form' ? active3 = 'active' : active3 = '' %>
+      
+      <a href="/home"><li class=<%=active1%>>Employee List</li></a>
+      <a href="/job"><li class=<%=active2%>>Create/Update Job</li></a>
+      <a href="employee/hiring"><li class=<%=active3%>>Hire New Employee</li></a>
+    </ul>
   </nav>

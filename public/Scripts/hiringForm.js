@@ -92,3 +92,9 @@ const getDepartmentId = () => {
 
     document.getElementById("department-list-id").value = departmentdata[index][0];
 }
+
+
+document.getElementById("cancelBtn").onchange = (e) => {
+    e.preventDefault();
+    window.location.href = "./";
+}

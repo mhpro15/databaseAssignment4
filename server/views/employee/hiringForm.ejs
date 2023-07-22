@@ -1,34 +1,80 @@
 <%- include ../partials/header.ejs %>
 
-<%- include ../partials/main_nav.ejs %>
+<div class="flex-container">
+  <div class="flex-item-left"><%- include ../partials/main_nav.ejs %></div>
+  <div class="flex-item-right">
+
+
   
 <main>
     <form action="./hiring" method="POST">
     <div id="hiring-form-container">
-        <h2>Employee Hiring Form</h2>
-        <label for="fname">First name: </label>
-        <input type="text" id="fname" name="fname" required > <br>
-        <label for="lname">Last name: </label>
-        <input type="text" id="lname" name="lname" required> <br>
-        <label for="phone">Phone number: </label>
-        <input type="text" id="phone" name="phone" required> <br>
-        <label for="email">Email: </label>
-        <input type="text" id="email" name="email" required> <br>
-        <label for="hiredate">Hire date: </label>
-        <input type="date" id="hiredate" name="hiredate" > <br>
-        <label for="salary">Salary: </label>
-        <input type="text" id="salary" name="salary" required> <br> <br>
-
-        <label for="">Position: </label>
-        <table>
+        <h1>Employee Hiring Form</h1>
+        <br>
+        <table class="table1">
             <tr>
+                <th>
+                    <label for="fname">First name: </label>    
+                </th>
+                <td>
+                    <input type="text" id="fname" name="fname" required > 
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="lname">Last name: </label>
+                </th>
+                <td>
+                    <input type="text" id="lname" name="lname" required>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="phone">Phone number: </label>
+                </th>
+                <td>
+                    <input type="text" id="phone" name="phone" required>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="email">Email: </label>
+                </th>
+                <td>
+                    <input type="text" id="email" name="email" required>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hiredate">Hire date: </label>
+                </th>
+                <td>
+                    <input type="date" id="hiredate" name="hiredate" >
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="salary">Salary: </label>
+                </th>
+                <td>
+                    <input type="text" id="salary" name="salary" required>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table class="table2">
+            <tr>
+                <th></th>
                 <th>Job ID</th>
                 <th>Job Title</th>
+                <th></th>
             </tr>
             
             <tr>
+                <td class="firstCol"><h2>Job: </h2></td>
+               
                 <td>
-                    <input type="text" id="position-list-id" name="jobId" >
+                    <input type="text" id="position-list-id" name="jobId" class="inputFill"  >
                 </td>
                 <td>
                     <select name="job-title" id="position-list-title" onchange="getJobId()" >
@@ -37,20 +83,21 @@
                         <% } %>
                     </select>
                 </td>
+                <td></td>
                 
             </tr>
-        </table>
 
         <br>
-        <label for="">Manager: </label>
-        <table>
+            
             <tr>
+                <th></th>
                 <th>Employee ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
             </tr>
             
             <tr>
+                <td class="firstCol"><h2>Manager: </h2></td>
                 <td>
                     <select name="managerId" id="employee-id" onchange="managerFill1()" >
                      <% for (let i = 0; i < employees.length; i++) { %>
@@ -74,19 +121,21 @@
                 </td>
                 
             </tr>
-        </table>
         <br>
 
-        <label for="">Department: </label>
-        <table>
            <tr>
+            <th></th>
+            
                 <th>Department ID</th>
                 <th>Department Name</th>
+                <th></th>
             </tr>
             
             <tr>
+                <td class="firstCol"><h2>Department: </h2></td>
+                
                 <td>
-                    <input type="text" id="department-list-id" name="departmentId" >
+                    <input type="text" id="department-list-id" name="departmentId" class="inputFill"  >
                 </td>
                 <td>
                     <select name="department-title" id="department-list-title" onchange="getDepartmentId()" >
@@ -95,16 +144,18 @@
                         <% } %>
                     </select>
                 </td>
-                
+                <td></td>
             </tr>
         </table>
         <br>
-        <p><%=error%></p>
-        <a href="/employee">Cancel</a>
-        <button type="submit" id="submitBtn">Hire</button>
+        <p class="error"><%=error%></p>
+        <a  href="/employee"><button class="cancelBtn" id="cancelBtn" type="button">Cancel</button></a>
+        <button class="hireBtn" type="submit" id="submitBtn">Hire</button>
     </div>
     </form>
 </main>
+</div>
+</div>
   
 <%- include ../partials/bottom_nav.ejs %>  
 <script src="/Scripts/hiringForm.js"></script>

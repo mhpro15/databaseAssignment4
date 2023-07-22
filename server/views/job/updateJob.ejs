@@ -1,32 +1,53 @@
 <%- include ../partials/header.ejs %>
 
-<%- include ../partials/main_nav.ejs %>
+<div class="flex-container">
+  <div class="flex-item-left"><%- include ../partials/main_nav.ejs %></div>
+  <div class="flex-item-right">
+
   
 <main>
-    <h1>Create/Update Job Description</h1>
-    <div>
+    
+    <div class="updateFormContainer">
+      <h1>Create/Update Job Description</h1>
         <p id="searchResult" >Status: </p>
         
-        <label for="id">Please enter Job ID:</label>
-        <input type="text" id="id" name="id" placeholder="Job ID" required>
-        <button type="none" id="searchBtn">Search</button>
-        <br>
-        <label for="title">Job Title:</label>
-        <input type="text" id="title" name="title" placeholder="Job Title" >
-        <br>
-        <label for="minSalary">Minimum Salary:</label>
-        <input type="text" id="minSalary" name="minSalary" placeholder="Minimum Salary" >
-        <br>
-        <label for="maxSalary">Maximum Salary:</label>
+        <table>
+          <tr>
+            <th>
+              <label for="id">Please enter Job ID:</label>
+            </th>
+            <td>
+              <input type="text" id="id" name="id" placeholder="Job ID" required class="inputID">
+            <a type="none" id="searchBtn"><img class="searchlogo" src="Assets/images/search.svg" alt=""></a></td>
+          </tr>
+
+          <tr>
+            <th> <label for="title">Job Title:</label></th>
+            <td> <input type="text" id="title" name="title" placeholder="Job Title" ></td>
+          </tr>
+
+          <tr>
+            <th> <label for="minSalary">Minimum Salary:</label></th>
+            <td><input type="text" id="minSalary" name="minSalary" placeholder="Minimum Salary" ></td>
+          </tr>
+
+          <tr>
+            <th>
+        <label for="maxSalary">Maximum Salary:</label></th>
+            <td>
         <input type="text" id="maxSalary" name="maxSalary" placeholder="Maximum Salary" >
-        <br>
+        </td>
+          </tr>
+        </table>
 
         <button type="reset" id="clearBtn">Clear</button>
         <button id="createBtn" class="">Create</button>
         <button id="updateBtn" class="hidden">Update</button>
-        </div>
+    </div>
 </main>
   
+  </div>
+</div>
 <%- include ../partials/bottom_nav.ejs %>  
 
 <script src="/Scripts/job.js"></script>

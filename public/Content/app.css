@@ -4,8 +4,340 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
 }
 
 .hidden{
     display: none;
+}
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  background-color: #f5f7f9;
+}
+
+.flex-item-left {
+  flex: 20%;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+  
+}
+
+.flex-item-right {
+  flex: 80%;
+}
+.nav-title{
+  padding: 30% 10% ;
+  font-weight: 1500;
+  font-family: 'Lato', sans-serif;
+}
+
+.left-nav{
+  top: 50%;
+  position: sticky;
+  align-items: center;
+}
+
+.left-nav > ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.left-nav > ul > a > li{
+  padding: 10px;
+  text-align: center;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #000000;
+  border-bottom: solid 2px #f5f7f9;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.left-nav > ul >  a{
+  text-decoration: none;
+}
+
+.left-nav > ul >  a > li:hover:not(.active){
+  background-color: #f5f7f9;
+  border-left: solid 5px #ff6b6b;
+  color: #ff6b6b;
+}
+
+.active{
+  background-color: #f5f7f9;
+  border-right: solid 5px #6bff6b;
+  color: #ff6b6b;
+}
+
+footer{
+  background-color: #ffffff;
+  text-align: center;
+  height: 20px;
+  bottom: 0;
+  padding: 30px;
+}
+
+/* Right section */
+.searchBar{
+  background-color: #ffffff;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  padding: 40px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.listContainer {
+  padding: 5%;
+  min-height: 110vh;
+}
+
+
+.edit-btn{
+  width: 1.5rem;
+}
+.modify-btn :hover{
+  cursor: pointer;
+}
+
+.listContainer table{
+  margin:  auto;
+  width: 90%;
+}
+
+
+.listContainer table,th,td{
+  border-style: none;
+  border-collapse: collapse;
+  font-family: 'Kanit', sans-serif;
+}
+
+tr.rowData{
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.listContainer tr td:nth-child(1){
+  border-radius:  8px 0  0 8px ;
+}
+
+
+.listContainer tr td:last-child{
+  border-radius:  0 8px 8px 0   ;
+  width: 10rem;
+}
+
+
+.listContainer td{
+  width: 15%;
+  font-weight: 500;
+  background-color: #ffffff;
+  border-bottom: solid 3px #f5f7f9;
+  padding: 0;
+  height: 50px;
+}
+
+
+.listContainer td > input{
+  max-width: 100px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+
+
+
+.listContainer .cancel-btn:hover, .save-btn:hover{
+  cursor: pointer;
+}
+
+.listContainer .cancel-btn{
+  margin-right: 10px;
+}
+
+.listContainer .cancel-img, .save-img{
+  width: 1.3rem;
+  background-color: inherit;
+}
+
+/* create update job des */
+.updateFormContainer{
+  height: 95vh;
+  padding:  25%  10%;
+}
+
+.updateFormContainer table{
+  margin: 0 auto;
+}
+
+.updateFormContainer label{
+  line-height: 3rem;
+}
+
+.updateFormContainer th{
+  text-align: right;
+  font-size: 1.6rem;
+}
+
+.updateFormContainer td{
+  text-align: left;
+  padding-left: 20px;
+  font-size: 1.5rem;
+}
+
+.updateFormContainer input{
+  width: 400px;
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: solid 1px #a8a8a8;
+  padding-left: 10px;
+  
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.updateFormContainer .searchlogo{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.updateFormContainer #searchBtn{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.updateFormContainer #searchBtn:hover{
+  cursor: pointer;
+}
+
+
+.updateFormContainer .found{
+  color: #40ff40cb;
+  font-weight: bolder;
+}
+
+.updateFormContainer .error{
+  color: #ff4040cb;
+  font-weight: bolder;
+}
+
+
+
+.updateFormContainer #clearBtn,#createBtn,#updateBtn{
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.updateFormContainer #clearBtn{
+  margin-right: 10px;
+}
+
+.updateFormContainer #clearBtn:hover,#createBtn:hover,#updateBtn:hover{
+  background-color: #f5f7f9;
+}
+
+
+/* hiring form */
+
+#hiring-form-container{
+  height: 95vh;
+  padding:  10% 10%;
+}
+
+#hiring-form-container .table1{
+  margin: 0 auto;
+}
+
+#hiring-form-container > .table1 label{
+  line-height: 3rem;
+}
+
+#hiring-form-container > .table1 th{
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+#hiring-form-container > .table1 td{
+  text-align: left;
+  padding-left: 20px;
+  font-size: 1.3rem;
+}
+
+#hiring-form-container input{
+  width: 300px;
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: solid 1px #a8a8a8;
+  padding-left: 10px;
+  
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+#hiring-form-container select{
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: solid 1px #a8a8a8;
+  padding-left: 10px;
+  
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+#hiring-form-container .inputFill{
+  text-align: center;
+}
+
+
+#hiring-form-container .firstCol{
+  width: 200px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+#hiring-form-container .table2{
+  margin: 0 auto;
+}
+
+#hiring-form-container .table2 input, #hiring-form-container .table2  select{
+  width: 250px;
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: solid 1px #a8a8a8;
+  padding-left: 10px;
+  
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+#hiring-form-container .table2 tr:nth-child(even){
+  height: 50px;
+}
+
+#hiring-form-container .cancelBtn{
+  margin-right: 20px;
+}
+
+#hiring-form-container .cancelBtn, .hireBtn{
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+#hiring-form-container .cancelBtn:hover, .hireBtn:hover{
+  background-color: #f5f7f9;
 }

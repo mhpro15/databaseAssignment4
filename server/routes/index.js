@@ -3,10 +3,12 @@ let router = express.Router();
 
 let indexController = require('../controllers/index');
 
-/* GET home page. */
-router.get('/', indexController.displayHomePage);
+let employeeController = require('../controllers/employee');
 
 /* GET home page. */
-router.get('/home', indexController.displayHomePage);
+router.get('/', employeeController.displayEmployeePage);
+
+/* GET home page. */
+router.get('/home', employeeController.displayEmployeePage);
 
 module.exports = router;

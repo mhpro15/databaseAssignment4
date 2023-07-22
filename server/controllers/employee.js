@@ -6,6 +6,7 @@ let oracledb = require('oracledb');
 const MOMENT = require('moment');
 const querystring = require('querystring');
 const e = require('connect-flash');
+const { type } = require('os');
 
 module.exports.displayEmployeePage = async (req, res, next) => {
     try {
@@ -13,7 +14,7 @@ module.exports.displayEmployeePage = async (req, res, next) => {
         const employeeList = await connection.execute(`SELECT employee_id,first_name,last_name,email,phone_number,salary FROM hr_employees ORDER BY employee_id`);
 
         await connection.close();   // Always close connections
-        res.render('employee/list', { title: 'Hiring Form', employees: employeeList.rows});
+        res.render('employee/list', { title: 'Home', employees: employeeList.rows});
 
     } catch (error) {
         console.log(error);
@@ -39,7 +40,7 @@ module.exports.displayHiringPage = async (req, res, next) => {
             res.render('employee/hiringForm', { title: 'Hiring Form' , jobs: joblist.rows , employees: employeeList.rows, departments: departmentList.rows, error:"Invalid Salary, Please try again"});
         }
             else{
-        res.render('employee/hiringForm', { title: 'Hiring Form' , jobs: joblist.rows , employees: employeeList.rows, departments: departmentList.rows, error:""});
+        res.render('employee/hiringForm', { title: 'Hiring Form' , jobs: joblist.rows , employees: employeeList.rows, departments: departmentList.rows, error: error});
         }
     } catch (error) {
         console.log(error);
@@ -88,17 +89,16 @@ module.exports.getDepartmentList = async (req, res, next) => {
 
 module.exports.processHiringPage = async (req, res, next) => {
     try {
-        
         let connection = await oracledb.getConnection();
         await connection.execute(`ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD'`);
 
         let newID = await connection.execute(`SELECT MAX(employee_id) FROM hr_employees`);
         newID = newID.rows[0][0] + 1;
 
-
         const result = await connection.execute(`
-        INSERT INTO hr_employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id)
-        VALUES(:employee_id,:first_name,:last_name,:email,:phone_number,:hire_date,:job_id,:salary,:manager_id,:department_id)`, {
+        BEGIN
+            employee_hire_sp(:employee_id,:first_name,:last_name,:email,:phone_number,:hire_date,:job_id,:salary,:manager_id,:department_id);
+        END;`, {
             employee_id: newID,
             first_name: req.body.fname,
             last_name: req.body.lname,
@@ -106,12 +106,14 @@ module.exports.processHiringPage = async (req, res, next) => {
             phone_number: req.body.phone,
             hire_date: req.body.hiredate,
             job_id: req.body.jobId,
-            salary: req.body.salary,
-            manager_id: req.body.managerId,
-            department_id: req.body.departmentId
+            salary: Number(req.body.salary),
+            manager_id: Number(req.body.managerId),
+            department_id: Number(req.body.departmentId)
         });
 
-        if (result.rowsAffected == 1) {
+        const result2 = await connection.execute(`SELECT employee_id FROM hr_employees WHERE employee_id=:employee_id`, { employee_id: newID });
+        console.log(result2);
+        if (result2 != null) {
             console.log("Employee added");
             await connection.execute(`COMMIT`);
         }
@@ -123,9 +125,13 @@ module.exports.processHiringPage = async (req, res, next) => {
          await connection.close();   // Always close connections
         res.redirect('/employee');
     } catch (error) {
-        if (error.errorNum = 20100) {
+        console.log(error);
+        if (error.errorNum == 20100) {
              res.redirect('./hiring?error=20100')
         }
+        else{res.redirect(`./hiring?error=${error.message}`)}
+            
+        
     }
     
 }
@@ -150,7 +156,7 @@ module.exports.processUpdatePage = async (req, res, next) => {
             phone: phone,
             salary: Number(salary)
         });
-        console.log(result);
+        console.log("Res is" + result);
 
         if (result.rowsAffected == 1) {
             console.log("Employee updated");
@@ -166,6 +172,7 @@ module.exports.processUpdatePage = async (req, res, next) => {
         await connection.close();   // Always close connections
         res.json(result2.rows[0])
     } catch (error) {
+        console.log(error);
         res.json(error)
     }
     
