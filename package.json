@@ -6,8 +6,8 @@
     "start": "nodemon ./server.js"
   },
   "engines": {
-    "node": "^12.18.3",
-    "npm": "^6.0.0"
+    "node": "^18.1.0",
+    "npm": "^9.5.1"
   },
   "dependencies": {
     "@angular/cli": "^10.1.0",
