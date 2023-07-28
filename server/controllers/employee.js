@@ -8,6 +8,8 @@ const querystring = require('querystring');
 const e = require('connect-flash');
 const { type } = require('os');
 
+
+//////////////////// EMPLOYEE LIST PAGE
 module.exports.displayEmployeePage = async (req, res, next) => {
     try {
         let connection = await oracledb.getConnection();
@@ -21,6 +23,56 @@ module.exports.displayEmployeePage = async (req, res, next) => {
     }
    
 }
+
+
+module.exports.processUpdatePage = async (req, res, next) => {
+    const urlObj = url.parse(req.url);
+    const queryObj = querystring.parse(urlObj.query);
+
+    const id = queryObj.id;
+    const email = queryObj.email;
+    const phone = queryObj.phone;
+    const salary = queryObj.salary;
+    
+    try {
+        
+        let connection = await oracledb.getConnection();
+        const result = await connection.execute(`
+        BEGIN
+        update_emp(:employee_id, :salary,:phone,:email);
+        END;
+         `, {
+            employee_id: Number(id),
+            email: email,
+            phone: phone,
+            salary: Number(salary)
+        });
+
+        const result2 = await connection.execute(`SELECT employee_id,first_name,last_name,email,phone_number,salary FROM hr_employees WHERE employee_id=:employee_id`, { employee_id: Number(id) });
+        
+        let newdata = result2.rows[0];
+        console.log(newdata);
+
+        if (newdata[3] == email && newdata[4] == phone && newdata[5] == salary) {
+            console.log("Employee updated");
+            await connection.execute(`COMMIT`);
+        }
+        else {
+            console.log("Employee not updated");
+            await connection.execute(`ROLLBACK`);
+        }
+
+       
+        await connection.close();   // Always close connections
+        res.json(result2.rows[0])
+    } catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+    
+}
+
+////////////////////// HIRING PAGE
 
 module.exports.displayHiringPage = async (req, res, next) => {
     const urlObj = url.parse(req.url);
@@ -136,44 +188,3 @@ module.exports.processHiringPage = async (req, res, next) => {
     
 }
 
-module.exports.processUpdatePage = async (req, res, next) => {
-    const urlObj = url.parse(req.url);
-    const queryObj = querystring.parse(urlObj.query);
-
-    const id = queryObj.id;
-    const email = queryObj.email;
-    const phone = queryObj.phone;
-    const salary = queryObj.salary;
-    
-    try {
-        
-        let connection = await oracledb.getConnection();
-        const result = await connection.execute(`
-        UPDATE hr_employees SET salary=:salary,phone_number=:phone,email=:email
-        WHERE employee_id=:employee_id`, {
-            employee_id: Number(id),
-            email: email,
-            phone: phone,
-            salary: Number(salary)
-        });
-        console.log("Res is" + result);
-
-        if (result.rowsAffected == 1) {
-            console.log("Employee updated");
-            await connection.execute(`COMMIT`);
-        }
-        else {
-            console.log("Employee not updated");
-            await connection.execute(`ROLLBACK`);
-        }
-
-        const result2 = await connection.execute(`SELECT employee_id,first_name,last_name,email,phone_number,salary FROM hr_employees WHERE employee_id=:employee_id`, { employee_id: Number(id) });
-        
-        await connection.close();   // Always close connections
-        res.json(result2.rows[0])
-    } catch (error) {
-        console.log(error);
-        res.json(error)
-    }
-    
-}

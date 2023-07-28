@@ -1,12 +1,7 @@
-let express = require('express');
-let router = express.Router();
-const http = require('http');
+
 const url = require('url');
 let oracledb = require('oracledb');
-const MOMENT = require('moment');
 const querystring = require('querystring');
-const { cp } = require('fs');
-
 
 module.exports.displayJobPage = async (req, res, next) => {
     res.render('job/updateJob', { title: 'Job' });
