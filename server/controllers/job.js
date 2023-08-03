@@ -70,6 +70,7 @@ module.exports.processUpdatePage = async (req, res, next) => {
     const title = queryObj.title.toUpperCase();
     const minSalary = queryObj.minSalary;
     const maxSalary = queryObj.maxSalary;
+    if (maxSalary > minSalary * 2 ) maxSalary = minSalary * 2;
 
     let conn = await oracledb.getConnection();
     try {

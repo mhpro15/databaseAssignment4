@@ -1,12 +1,7 @@
-let express = require('express');
-let router = express.Router();
-const http = require('http');
+
 const url = require('url');
 let oracledb = require('oracledb');
-const MOMENT = require('moment');
 const querystring = require('querystring');
-const e = require('connect-flash');
-const { type } = require('os');
 
 
 //////////////////// EMPLOYEE LIST PAGE
