@@ -340,3 +340,8 @@ tr.rowData{
 #hiring-form-container .cancelBtn:hover, .hireBtn:hover{
   background-color: #f5f7f9;
 }
+
+.error-container{
+  height: 95vh;
+  padding:  10% 10%;
+}

@@ -1,14 +1,16 @@
-<%- include partials/header.ejs %>
+<%- include ./partials/header.ejs %>
+<div class="flex-container">
+  <div class="flex-item-left"><%- include ./partials/main_nav.ejs %></div>
+    <div class="flex-item-right">
 
-<%- include partials/main_nav.ejs %>
-
-<div class="container">
-    <h1><%= message %></h1>
-    <h2><%= error.status %></h2>
-    <pre><%= error.stack %></pre>
+        <div class="error-container">
+            <h1><%= message %></h1>
+            <h2><%= error.status %></h2>
+            <pre><%= error.stack %></pre>
+        </div>
+  </div>
 </div>
 
+<%- include ./partials/bottom_nav.ejs %>  
 
-<%- include partials/bottom_nav.ejs %>
-
-<%- include partials/footer.ejs %>
+<%- include ./partials/footer.ejs %>

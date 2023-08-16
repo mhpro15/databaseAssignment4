@@ -15,6 +15,7 @@ module.exports.displayEmployeePage = async (req, res, next) => {
 
     } catch (error) {
         console.log(error);
+        res.render('error', { message: error.message, error: error });
     }
    
 }
@@ -91,6 +92,7 @@ module.exports.displayHiringPage = async (req, res, next) => {
         }
     } catch (error) {
         console.log(error);
+        res.render('error', { message: error.message, error: error });
     }
    }
 

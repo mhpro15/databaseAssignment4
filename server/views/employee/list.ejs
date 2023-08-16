@@ -2,39 +2,39 @@
 
 <div class="flex-container">
   <div class="flex-item-left"><%- include ../partials/main_nav.ejs %></div>
-  <div class="flex-item-right">
+    <div class="flex-item-right">
 
     <div class="searchBar">
       Search for ID: <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for id..">
     </div>
   
-<main class="listContainer">
-    <table>
-        <tr>
-            <th>Employee ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Salary</th>
-            <th>Action</th>
-        </tr>
-       
-            <% for (let i = 0; i < employees.length; i++) { %>
-            <tr class="rowData" id=<%= employees[i][0]%>>
-                <td><%= employees[i][0] %></td>
-                <td><%= employees[i][1] %></td>
-                <td><%= employees[i][2] %></td>
-                <td id="modifyTarget1" name="modifyTarget1"><%= employees[i][3] %></td>
-                <td id="modifyTarget2" name="modifyTarget2"><%= employees[i][4] %></td>
-                <td id="modifyTarget3" name="modifyTarget3"><%= employees[i][5] %></td>
-            
-
+    <main class="listContainer">
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Salary</th>
+                <th>Action</th>
             </tr>
-            <% } %>
-       
-    </table>
-</main>
+          
+                <% for (let i = 0; i < employees.length; i++) { %>
+                <tr class="rowData" id=<%= employees[i][0]%>>
+                    <td><%= employees[i][0] %></td>
+                    <td><%= employees[i][1] %></td>
+                    <td><%= employees[i][2] %></td>
+                    <td id="modifyTarget1" name="modifyTarget1"><%= employees[i][3] %></td>
+                    <td id="modifyTarget2" name="modifyTarget2"><%= employees[i][4] %></td>
+                    <td id="modifyTarget3" name="modifyTarget3"><%= employees[i][5] %></td>
+                
+
+                </tr>
+                <% } %>
+          
+        </table>
+    </main>
 
   </div>
 </div>
