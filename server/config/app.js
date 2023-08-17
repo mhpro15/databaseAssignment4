@@ -11,11 +11,13 @@ let oracledb = require('oracledb');
 let flash = require('connect-flash');
 
 require('dotenv').config()
-oracledb.createPool({
+  oracledb.createPool({
             user: process.env.EECS_USER, 
             password: process.env.EECS_PASSWORD,
-            connectString: process.env.EECS_HOST
+            connectString: process.env.EECS_HOST,
         });
+
+
 
 let indexRouter = require("../routes/index");
 let employeeRouter = require("../routes/employee");
